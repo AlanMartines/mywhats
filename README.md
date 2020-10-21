@@ -75,6 +75,7 @@ http://localhost:8000/
     )
   });
   const content = await response.json();
+  return content;
 })();
 ```
 
@@ -95,6 +96,7 @@ http://localhost:8000/
     )
   });
   const content = await response.json();
+  return content;
 })();
 ```
 
@@ -115,6 +117,7 @@ http://localhost:8000/
     )
   });
   const content = await response.json();
+  return content;
 })();
 ```
 
@@ -134,6 +137,7 @@ http://localhost:8000/
     )
   });
   const content = await response.json();
+  return content;
 })();
 ```
 
