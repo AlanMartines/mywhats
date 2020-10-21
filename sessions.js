@@ -225,16 +225,20 @@ module.exports = class Sessions {
             });
             // State change
             client.onStateChange((state) => {
-                console.log('- Status do sistema:', state);
+                console.log('- State changed: ', state);
                 session.state = state;
-                const conflits = [
-                    venom.SocketState.CONFLICT,
-                    venom.SocketState.UNPAIRED,
-                    venom.SocketState.UNLAUNCHED,
-                ];
-                if (conflits.includes(state)) {
-                    client.useHere();
-                }
+                if ('CONFLICT'.includes(state)) client.useHere();
+            });
+            //
+            client.onStreamChange((stream) => {
+                console.log('- Stream changed: ', stream);
+                if ('DISCONNECTED'.includes(stream)) console.log('- Logout');
+              });
+              //
+            // function to detect incoming call
+            client.onIncomingCall(async (call) => {
+                console.log(call);
+                client.sendText(call.peerJid, "Desculpe, ainda não consigo atender chamadas");
             });
             // Listen to ack's
             client.onAck((ack) => {
