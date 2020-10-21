@@ -1500,10 +1500,10 @@ $('document').ready(function () {
         dropdown.prop('selectedIndex', 0);
         var SessionName = $("#SessionName").val();
         $.ajax({
-            type: 'GET',
-            url: '/sistem/getAllGroups' + SessionName,
-            //data: data,
-            dataType: 'json',
+            type: "POST",
+            url: '/sistem/getAllGroups/',
+            data: { "SessionName": SessionName },        
+            //dataType: 'json',
             beforeSend: function () {
                 $("#BotaoGrupoText").html('<i class="fas fa-spinner fa-spin"></i> Carregando...');
             },
@@ -1526,10 +1526,10 @@ $('document').ready(function () {
         dropdown.prop('selectedIndex', 0);
         var SessionName = $("#SessionName").val();
         $.ajax({
-            type: 'GET',
-            url: '/sistem/getAllGroups' + SessionName,
-            //data: data,
-            dataType: 'json',
+            type: "POST",
+            url: '/sistem/getAllGroups/',
+            data: { "SessionName": SessionName },      
+            //dataType: 'json',
             beforeSend: function () {
                 $("#BotaoGrupoImg").html('<i class="fas fa-spinner fa-spin"></i> Carregando...');
             },
