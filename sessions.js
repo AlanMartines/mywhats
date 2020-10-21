@@ -11,6 +11,11 @@ const {
 // ------------------------------------------------------------------------------------------------------- //
 //
 //
+function soNumeros(string) {
+    var numsStr = string.replace(/\D+/g, "");
+    return parseInt(numsStr);
+}
+//
 module.exports = class Sessions {
     //
     static async start(sessionName) {
@@ -365,18 +370,17 @@ module.exports = class Sessions {
                 var arrayNumbers = fs.readFileSync(filePath, 'utf-8').toString().split(/\r?\n/);
                 for (var i in arrayNumbers) {
                     //console.log(arrayNumbers[i]);
-                    var number = arrayNumbers[i];
+                    var numero = arrayNumbers[i];
                     //
-                    if (number != null || number != '') {
-                        //
+                    if (numero != null || numero != '') {
                         var resultsendTextMult = await session.client.then(async (client) => {
                             // Send basic text
-                            return await client.sendText(number + '@c.us', msgtxtmass).then((result) => {
+                            return await client.sendText(soNumeros(numero) + '@c.us', msgtxtmass).then((result) => {
                                 //console.log(result); //return object success
                                 return {
                                     erro: false,
                                     status: 'OK',
-                                    number: number,
+                                    number: numero,
                                     menssagem: 'Menssagem envida com sucesso'
                                 };
                             }).catch((erro) => {
@@ -384,7 +388,7 @@ module.exports = class Sessions {
                                 return {
                                     erro: true,
                                     status: '404',
-                                    number: number,
+                                    number: numero,
                                     menssagem: 'Erro ao enviar menssagem'
                                 };
                             });
@@ -554,18 +558,17 @@ module.exports = class Sessions {
                     var arrayNumbers = fs.readFileSync(filePathContato, 'utf-8').toString().split(/\r?\n/);
                     for (var i in arrayNumbers) {
                         //console.log(arrayNumbers[i]);
-                        var number = arrayNumbers[i];
+                        var numero = arrayNumbers[i];
                         //
-                        if (number != null || number != '') {
-                            //
+                        if (numero != null || numero != '') {
                             var resultsendTextMult = await session.client.then(async (client) => {
                                 // Send basic text
-                                return await client.sendImage(number + '@c.us', filePathImagem, originalnameImagem, msgimgmass).then((result) => {
+                                return await client.sendImage(soNumeros(numero) + '@c.us', filePathImagem, originalnameImagem, msgimgmass).then((result) => {
                                     //console.log(result); //return object success
                                     return {
                                         erro: false,
                                         status: 'OK',
-                                        number: number,
+                                        number: numero,
                                         menssagem: 'Menssagem envida com sucesso'
                                     };
                                 }).catch((erro) => {
@@ -573,7 +576,7 @@ module.exports = class Sessions {
                                     return {
                                         erro: true,
                                         status: '404',
-                                        number: number,
+                                        number: numero,
                                         menssagem: 'Erro ao enviar menssagem'
                                     };
                                 });
@@ -880,7 +883,7 @@ module.exports = class Sessions {
         if (session) {
             if (session.state == "CONNECTED") {
                 var resultloadAndGetAllMessagesInChat = await session.client.then(async client => {
-                    return await client.loadAndGetAllMessagesInChat(numero + '@g.us').then((result) => {
+                    return await client.loadAndGetAllMessagesInChat(soNumeros(numero) + '@g.us').then((result) => {
                         //console.log('Result: ', result); //return object success
                         return result;
                     }).catch((erro) => {
@@ -930,7 +933,7 @@ module.exports = class Sessions {
         if (session) {
             if (session.state == "CONNECTED") {
                 var resultgetStatus = await session.client.then(async client => {
-                    return await client.getStatus(numero + '@c.us').then((result) => {
+                    return await client.getStatus(soNumeros(numero) + '@c.us').then((result) => {
                         //console.log('Result: ', result); //return object success
                         return result;
                     }).catch((erro) => {
@@ -980,7 +983,7 @@ module.exports = class Sessions {
         if (session) {
             if (session.state == "CONNECTED") {
                 var resultgetNumberProfile = await session.client.then(async client => {
-                    return await client.getNumberProfile(numero + '@c.us').then((result) => {
+                    return await client.getNumberProfile(soNumeros(numero) + '@c.us').then((result) => {
                         //console.log('Result: ', result); //return object success
                         return result;
                     }).catch((erro) => {
@@ -1180,7 +1183,7 @@ module.exports = class Sessions {
         if (session) {
             if (session.state == "CONNECTED") {
                 var resultgetProfilePicFromServer = await session.client.then(async client => {
-                    return await client.getProfilePicFromServer(numero + '@g.us').then((result) => {
+                    return await client.getProfilePicFromServer(soNumeros(numero) + '@g.us').then((result) => {
                         //console.log('Result: ', result); //return object success
                         return result;
                     }).catch((erro) => {
@@ -1230,7 +1233,7 @@ module.exports = class Sessions {
         if (session) {
             if (session.state == "CONNECTED") {
                 var resultgetChat = await session.client.then(async client => {
-                    return await client.getChat(numero + '@c.us').then((result) => {
+                    return await client.getChat(soNumeros(numero) + '@c.us').then((result) => {
                         //console.log('Result: ', result); //return object success
                         return result;
                     }).catch((erro) => {
@@ -1280,7 +1283,7 @@ module.exports = class Sessions {
         if (session) {
             if (session.state == "CONNECTED") {
                 var resultcheckNumberStatus = await session.client.then(async client => {
-                    return await client.checkNumberStatus(numero + '@c.us').then((result) => {
+                    return await client.checkNumberStatus(soNumeros(numero) + '@c.us').then((result) => {
                         //console.log('Result: ', result); //return object success
                         return result;
                     }).catch((erro) => {
@@ -1289,7 +1292,7 @@ module.exports = class Sessions {
                     });
                 });
                 var checkNumberStatus = resultcheckNumberStatus;
-                checkNumberStatus['number'] = numero;
+                checkNumberStatus['number'] = soNumeros(numero);
                 return checkNumberStatus;
             } else {
                 if (session.state == "STARTING") {
@@ -1343,7 +1346,7 @@ module.exports = class Sessions {
                     if (numero != null || numero != '') {
                         //
                         var resultcheckNumberStatus = await session.client.then(async client => {
-                            return await client.checkNumberStatus(numero + '@c.us').then((result) => {
+                            return await client.checkNumberStatus(soNumeros(numero) + '@c.us').then((result) => {
                                 //console.log('Result: ', result); //return object success
                                 return result;
                             }).catch((erro) => {
@@ -1353,7 +1356,7 @@ module.exports = class Sessions {
                         });
                         //
                         var checkNumberStatus = resultcheckNumberStatus;
-                        checkNumberStatus['number'] = numero;
+                        checkNumberStatus['number'] = soNumeros(numero);
                         //return checkNumberStatus;
 
                         obj['sendResult'].push(checkNumberStatus);
