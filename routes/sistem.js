@@ -151,7 +151,7 @@ router.post("/sendTextGrupo", async (req, res, next) => {
 router.post("/sendImage", upload.single('fileimg'), async (req, res, next) => {
     var result = await Sessions.sendImage(
         req.body.SessionName,
-        apenasNumeros(req.body.phonefull),
+        soNumeros(req.body.phonefull),
         req.file.buffer.toString('base64'),
         req.file.originalname,
         req.body.msgimg
@@ -201,7 +201,7 @@ router.post("/sendImageGrupo", upload.single('FileImageGrupo'), async (req, res,
 router.get("/sendFile", async (req, res, next) => {
     var result = await Sessions.sendFile(
         req.body.SessionName,
-        apenasNumeros(req.body.phonefull),
+        soNumeros(req.body.phonefull),
         req.body.base64Data,
         req.body.fileName,
         req.body.caption
@@ -240,7 +240,7 @@ router.post("/getAllContacts", async (req, res, next) => {
 router.post("/loadAndGetAllMessagesInChat", async (req, res, next) => {
     var result = await Sessions.loadAndGetAllMessagesInChat(
         req.body.SessionName, 
-        apenasNumeros(req.body.phonefull)
+        soNumeros(req.body.phonefull)
     );
     res.json(result);
 }); //loadAndGetAllMessagesInChat
@@ -251,7 +251,7 @@ router.post("/loadAndGetAllMessagesInChat", async (req, res, next) => {
 router.post("/getStatus", async (req, res, next) => {
     var result = await Sessions.getStatus(
         req.body.SessionName, 
-        apenasNumeros(req.body.phonefull)
+        soNumeros(req.body.phonefull)
     );
     res.json(result);
 }); //getStatus
@@ -262,7 +262,7 @@ router.post("/getStatus", async (req, res, next) => {
 router.post("/getNumberProfile", async (req, res, next) => {
     var result = await Sessions.getNumberProfile(
         req.body.SessionName, 
-        apenasNumeros(req.body.phonefull)
+        soNumeros(req.body.phonefull)
      );
     res.json(result);
 }); //getNumberProfile
@@ -297,7 +297,7 @@ router.post("/getAllGroups", async (req, res, next) => {
 router.post("/getProfilePicFromServer", async (req, res, next) => {
     var result = await Sessions.getProfilePicFromServer(
         req.body.SessionName, 
-        apenasNumeros(req.body.phonefull)
+        soNumeros(req.body.phonefull)
     );
     res.json(result);
 }); //getProfilePicFromServer
