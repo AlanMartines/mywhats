@@ -26,7 +26,7 @@ case "$1" in
     node ../index.js
   ;;
   *)
-    echo "Usage: {test-api|jshint|coverage|stg|qa|dev}"
+    echo "Usage: {monitor|sistem|web}"
     exit 1
   ;;
 esac
