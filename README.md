@@ -59,18 +59,83 @@ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -
 #### Acesso via web (Em desenvolvimento a integração/automatização)
 http://localhost:8000/
 
-#### Iniciar sessão whatsapp
-http://localhost:8000/sistem/start/nome_da_sessão
+#### Iniciar sessão whatsapp (POST method)
+```node
+(async () => {
+  const response = await fetch('http://localhost:8000/sistem/Start', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+        {
+            sessionName: "session1"
+        }
+    )
+  });
+  const content = await response.json();
+})();
+```
 
-####  Exibir QR-Code no navegador
-http://localhost:8000/sistem/QRCode/nome_da_sessão/true
+####  Exibir QR-Code no navegador (POST method)
+```node
+(async () => {
+  const response = await fetch('http://localhost:8000/sistem/QRCode', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+        {
+            sessionName: "session1",
+            View: "true"
+        }
+    )
+  });
+  const content = await response.json();
+})();
+```
 
-####  Retorna json com (base64) do QR-Code 
-http://localhost:8000/sistem/QRCode/nome_da_sessão/false
+####  Retorna json com (base64) do QR-Code (POST method)
+```node
+(async () => {
+  const response = await fetch('http://localhost:8000/sistem/QRCode', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+        {
+            sessionName: "session1",
+            View: "false"
+        }
+    )
+  });
+  const content = await response.json();
+})();
+```
 
-#### Fecha sessão whatsapp
-http://localhost:8000/sistem/crose/nome_da_sessão
-
+#### Fecha sessão whatsapp (POST method)
+```node
+(async () => {
+  const response = await fetch('http://localhost:8000/sistem/Close', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+        {
+            sessionName: "session1"
+        }
+    )
+  });
+  const content = await response.json();
+})();
+```
 
 ## Dockerfile
 ```bash
