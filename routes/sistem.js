@@ -116,7 +116,7 @@ router.post("/Close", async (req, res, next) => {
 router.post("/sendText", async (req, res, next) => {
     var result = await Sessions.sendText(
         req.body.SessionName,
-        apenasNumeros(req.body.phonefull),
+        soNumeros(req.body.phonefull),
         req.body.msg
     );
     //console.log(result);

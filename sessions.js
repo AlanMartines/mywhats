@@ -301,7 +301,7 @@ module.exports = class Sessions {
     // Funções básicas (uso)
     //
     static async sendText(sessionName, number, text) {
-        console.log("- Enviando menssagem de texto!");
+        console.log("- Enviando menssagem de texto! ");
         var session = Sessions.getSession(sessionName);
         if (session) {
             if (session.state == "CONNECTED") {
