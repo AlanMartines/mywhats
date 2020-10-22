@@ -32,6 +32,7 @@
   "dependencies": {
     "atob": "^2.1.2",
     "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "boxen": "^4.2.0",
     "chalk": "^4.0.0",
@@ -63,10 +64,11 @@
     "qrcode-terminal": "^0.12.0",
     "request": "^2.88.2",
     "rxjs": "^6.6.3",
+    "sequelize": "^6.3.5",
     "sessions": "0.0.2-7",
     "sharp": "^0.25.2",
     "spinnies": "^0.5.1",
     "tree-kill": "^1.2.2",
-    "venom-bot": "^2.0.16"
+    "venom-bot": "^2.0.18"
   }
 }
