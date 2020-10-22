@@ -5,7 +5,6 @@ _Todas as mudanças notáveis ​​neste projeto serão documentadas neste arqu
 
 **1.0.0**
 1 Outubro 2020
-
 ```sh
     Primeira versão
 
