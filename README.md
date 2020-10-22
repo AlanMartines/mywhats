@@ -61,7 +61,7 @@ http://localhost:8000/
 
 #### Iniciar sessão whatsapp (POST method)
 ```node
-(async () => {
+router.post("/Start", (req, res, next) => {
   const response = await fetch('http://localhost:8000/sistem/Start', {
     method: 'POST',
     headers: {
@@ -70,18 +70,18 @@ http://localhost:8000/
     },
     body: JSON.stringify(
         {
-            sessionName: "session1"
+            sessionName: req.body.SessionName
         }
     )
   });
   const content = await response.json();
   return content;
-})();
+});
 ```
 
 ####  Exibir QR-Code no navegador (POST method)
 ```node
-(async () => {
+router.post("/QRCode", (req, res, next) => {
   const response = await fetch('http://localhost:8000/sistem/QRCode', {
     method: 'POST',
     headers: {
@@ -90,19 +90,19 @@ http://localhost:8000/
     },
     body: JSON.stringify(
         {
-            sessionName: "session1",
+            sessionName: req.body.SessionName,
             View: "true"
         }
     )
   });
   const content = await response.json();
   return content;
-})();
+});
 ```
 
 ####  Retorna json com (base64) do QR-Code (POST method)
 ```node
-(async () => {
+router.post("/QRCode", (req, res, next) => {
   const response = await fetch('http://localhost:8000/sistem/QRCode', {
     method: 'POST',
     headers: {
@@ -111,19 +111,19 @@ http://localhost:8000/
     },
     body: JSON.stringify(
         {
-            sessionName: "session1",
+            sessionName: req.body.SessionName,
             View: "false"
         }
     )
   });
   const content = await response.json();
   return content;
-})();
+});
 ```
 
 #### Fecha sessão whatsapp (POST method)
 ```node
-(async () => {
+router.post("/Close", (req, res, next) => {
   const response = await fetch('http://localhost:8000/sistem/Close', {
     method: 'POST',
     headers: {
@@ -132,13 +132,13 @@ http://localhost:8000/
     },
     body: JSON.stringify(
         {
-            sessionName: "session1"
+            sessionName: req.body.SessionName
         }
     )
   });
   const content = await response.json();
   return content;
-})();
+});
 ```
 
 ## Dockerfile
