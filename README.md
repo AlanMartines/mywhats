@@ -158,6 +158,22 @@ $ docker build -t alanmartines/nodejs-mywhats:1.0 .
 # Criar um contêiner
 $ docker container run --name mywhats -p 8000:8000 -d alanmartines/nodejs-mywhats:1.0
 ```
+## Para instalar o certbot e criar o certificado SSL para domínios https
+```bash
+sudo apt-get update
+
+sudo apt-get install -y software-properties-common
+
+sudo add-apt-repository universe
+
+sudo add-apt-repository ppa:certbot/certbot
+
+sudo apt-get update
+
+sudo apt-get install -y certbot
+
+sudo certbot certonly --manual --force-renewal -d *.yourdomain.net -d yourdomain.net --agree-tos --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory
+```
 
 ## Em desenvolvimento
 Este projeto se encontra em desenvolvimento, então pode conter erros.
