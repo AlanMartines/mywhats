@@ -79,6 +79,26 @@ web.get("/home", async (req, res) => {
 });
 //
 //
+web.get("/usuarios", async (req, res, next) => {
+    const db = require("./databases/db.user");
+    console.log('Começou!');
+    const clientes = await db.selectCustomers();
+    console.log(clientes);
+    res.render('usuarios/uses_view',{
+        results: clientes
+      });
+});
+//
+web.get("/clientes", async (req, res, next) => {
+    const db = require("./databases/db.clientes");
+    console.log('Começou!');
+    const clientes = await db.selectCustomers();
+    console.log(clientes);
+    res.render('usuarios/uses_view',{
+        results: clientes
+      });
+});
+//
 /*
 web.post('/file_upload', upload.single('file'), (req, res, next) => {
     // encoded has the base64 of your file
