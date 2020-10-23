@@ -8,6 +8,7 @@ const https = require('https');
 const express = require('express');
 const bodyParser = require('body-parser')
 const handlebars = require('express-handlebars');
+const helpers = require('handlebars-helpers')();
 const path = require('path');
 const web = express();
 const cors = require('cors');

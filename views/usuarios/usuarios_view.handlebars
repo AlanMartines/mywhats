@@ -24,7 +24,7 @@
                 {{#each results}}
                 <tr>
                     <td class="text-left">{{ nome }}</td>
-                    <td class="text-center">{{ datanasc }}</td>
+                    <td class="text-center">{{moment datanasc format="DD/MM/YYYY"}}</td>
                     <td class="text-center">{{ celular }}</td>
                     <td class="text-center">
                         <a href="#" class="btn btn-sm btn-dark" title="Informações"><i
