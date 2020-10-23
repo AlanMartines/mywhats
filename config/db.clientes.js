@@ -2,14 +2,14 @@ const db = require('./connection');
 
 async function selectCustomers(){
     const conn = await db.connect();
-    const [rows] = await conn.query('SELECT * FROM usuarios;');
+    const [rows] = await conn.query('SELECT * FROM clientes;');
     conn.end();//fecha a conexão
     return rows;
 }
 //
 async function insertCustomer(customer){
     const conn = await db.connect();
-    const sql = 'INSERT INTO usuarios(nome, datanasc, cep, uf, cidade, rua, numero, bairro, complemento, email, senha, celular, telefone, ip, operadora, created) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);';
+    const sql = 'INSERT INTO clientes(nome, datanasc, cep, uf, cidade, rua, numero, bairro, complemento, email, celular, telefone, created) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);';
     const values = [customer.nome, customer.idade, customer.uf];
     const insert_user = await conn.query(sql, values);
     conn.end();//fecha a conexão
@@ -18,7 +18,7 @@ async function insertCustomer(customer){
 //
 async function updateCustomer(id, customer){
     const conn = await db.connect();
-    const sql = 'UPDATE usuarios SET nome=?, idade=?, uf=? WHERE id=?';
+    const sql = 'UPDATE clientes SET nome=?, idade=?, uf=? WHERE id=?';
     const values = [customer.nome, customer.idade, customer.uf, id];
     const update_user =  await conn.query(sql, values);
     conn.end();//fecha a conexão
@@ -27,7 +27,7 @@ async function updateCustomer(id, customer){
 //
 async function deleteCustomer(id){
     const conn = await db.connect();
-    const sql = 'DELETE FROM usuarios where id=?;';
+    const sql = 'DELETE FROM clientes where id=?;';
     const del_user = await conn.query(sql, [id]);
     conn.end();//fecha a conexão
     return del_user;
