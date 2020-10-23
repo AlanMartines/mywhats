@@ -84,7 +84,7 @@ web.get("/usuarios", async (req, res, next) => {
     console.log('Começou!');
     const clientes = await db.selectCustomers();
     console.log(clientes);
-    res.render('usuarios/uses_view',{
+    res.render('usuarios/usuarios_view',{
         results: clientes
       });
 });
@@ -94,7 +94,7 @@ web.get("/clientes", async (req, res, next) => {
     console.log('Começou!');
     const clientes = await db.selectCustomers();
     console.log(clientes);
-    res.render('usuarios/uses_view',{
+    res.render('clientes/clientes_view',{
         results: clientes
       });
 });
