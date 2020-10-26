@@ -8,7 +8,7 @@ const sis = express();
 const cors = require('cors');
 const hostname = process.env.HOST || 'localhost';
 const port = process.env.PORT || 9000;
-const api = require("./routes/api");
+const api = require("./routes/api.routes");
 const Sessions = require("./sessions.js");
 sis.use(cors());
 sis.use(express.json());
