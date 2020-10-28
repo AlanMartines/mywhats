@@ -71,6 +71,7 @@
     "request": "^2.88.2",
     "rxjs": "^6.6.3",
     "sequelize": "^6.3.5",
+    "sequelize-auto": "^0.6.5",
     "sessions": "0.0.2-7",
     "sharp": "^0.26.2",
     "spinnies": "^0.5.1",
