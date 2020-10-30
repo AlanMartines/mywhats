@@ -44,12 +44,6 @@ function setCopyrightDate(){
       year+=1900;
     document.getElementById("currentYear").innerHTML = year;
   }
-   
-  function getDate(){
-    var today = new Date();
-    var year = today.getFullYear();
-    document.getElementById("currentDate").innerHTML = year;
-  }
 
   function setCopyrightYear(){
     now = new Date
@@ -63,13 +57,6 @@ function setCopyrightDate(){
 $('document').ready(function () {
     //
     setCopyrightDate();
-    getDate();
-    //
-    //---------------------------------------------------------------------------------------------------------------------------------------------------//
-    // Onde estou
-    var ResponseURL = window.location.href;
-    var domain = ResponseURL.split('/');
-    var dir_local = domain[domain.length - 2];
     //
     //---------------------------------------------------------------------------------------------------------------------------------------------------//
     //
@@ -1945,5 +1932,7 @@ $('document').ready(function () {
     $("#SessionName").val(getCookie);
     //
     //---------------------------------------------------------------------------------------------------------------------------------------------------//
+    //
+    console.log('Cookie:', getCookie);
     //
 });
