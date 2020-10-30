@@ -11,7 +11,7 @@ function apenasNumeros(str) {
 }
 //
 function soNumeros(string) {
-    var numsStr = string.replace(/\D+/g, "");
+    var numsStr = String(string).replace(/\D+/g, "");
     return parseInt(numsStr);
 }
 //
