@@ -31,7 +31,8 @@ module.exports = class Sessions {
             //restart session
             console.log("- State: CLOSED");
             session.state = "STARTING";
-            session.status = 'notLogged';
+            session.status = "notLogged";
+            session.attempts = 0;
             session.client = Sessions.initSession(sessionName);
             Sessions.setup(sessionName);
         } else if (["CONFLICT", "UNPAIRED", "UNLAUNCHED", "UNPAIRED_IDLE"].includes(session.state)) {
@@ -61,7 +62,8 @@ module.exports = class Sessions {
             qrcode: false,
             client: false,
             status: 'notLogged',
-            state: 'STARTING'
+            state: 'STARTING',
+            attempts: ''
         }
         Sessions.sessions.push(newSession);
         console.log("- Nova sessão: " + newSession.state);
@@ -105,14 +107,17 @@ module.exports = class Sessions {
     static async initSession(sessionName) {
         console.log("- Iniciando sistema");
         var session = Sessions.getSession(sessionName);
-        const client = await venom.create(sessionName, (base64Qr, asciiQR) => {
+        const client = await venom.create(sessionName, (base64Qrimg, asciiQR, attempts) => {
             console.log('- Nome da sessão:', session.name);
             //
             session.state = "QRCODE";
             //
+            console.log('- Number of attempts to read the qrcode: ', attempts);
+            session.attempts = attempts;
+            //
             console.log("- Captura do QR-Code");
-            //console.log(base64Qr);
-            session.qrcode = base64Qr;
+            //console.log(base64Qrimg);
+            session.qrcode = base64Qrimg;
             //
             console.log("- Captura do asciiQR");
             // Registrar o QR no terminal
@@ -120,8 +125,8 @@ module.exports = class Sessions {
             session.CodeasciiQR = asciiQR;
             /*
             // Para escrevê-lo em outro lugar em um arquivo
-            //exportQR(base64Qr, './public/images/marketing-qr.png');
-            var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+            //exportQR(base64Qrimg, './public/images/marketing-qr.png');
+            var matches = base64Qrimg.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
                 response = {};
 
             if (matches.length !== 3) {
