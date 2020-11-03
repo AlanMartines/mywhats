@@ -5,7 +5,7 @@
                 <legend>Usuário</legend>
             </div>
             <div class="col text-right">
-                <a class="btn btn-sm btn-primary" href="#"><i class="fas fa-plus"></i> Novo Usuário</a>
+                <a class="btn btn-sm btn-primary" href="/usuarios/add"><i class="fas fa-plus"></i> Novo Usuário</a>
                 <a class="btn btn-sm btn-secondary" href="#"><i class="fas fa-sync-alt"></i> Atualizar</a>
             </div>
         </div>
@@ -14,7 +14,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col" class="text-left">Usuário</th>
-                    <th scope="col">Data</th>
+                    <th scope="col">Data Nasc</th>
                     <th scope="col">Celular</th>
                     <th scope="col">Ação</th>
                 </tr>
@@ -29,8 +29,9 @@
                     <td class="text-center">
                         <a href="#" class="btn btn-sm btn-dark" title="Informações"><i
                                 class="fas fa-info-circle"></i></a>
-                        <a href="#" class="btn btn-sm btn-warning" title="Editar"><i class="fas fa-pencil"></i></a>
-                        <a class="btn btn-sm btn-danger text-white show-alert-delete-user" data-iduser="{{ nome }}"
+                        <a href="#" class="btn btn-sm btn-warning text-white" title="Editar"><i
+                                class="fas fa-pencil-alt"></i></a>
+                        <a class="btn btn-sm btn-danger text-white show-alert-delete-user" data-iduser="{{ ID }}"
                             data-nomeuser="#" title="Apagar"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>

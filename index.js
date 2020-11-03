@@ -16,6 +16,7 @@ const admin = require("./routes/admin.routes");
 const pages = require("./routes/pages.routes");
 const monitor = require("./routes/monitor.routes");
 const sistem = require("./routes/sistem.routes");
+const usuarios = require("./routes/usuarios.routes");
 const api = require("./routes/api.routes");
 const ssl = process.env.HTTPS || false;
 const hostname = process.env.HOST || '0.0.0.0';
@@ -52,6 +53,7 @@ web.use("/admin", admin);
 web.use("/pages", pages);
 web.use("/sistem", sistem);
 web.use("/monitor", monitor);
+web.use("/", usuarios);
 //web.use("/api", api);
 //
 // Start the server web
@@ -77,27 +79,6 @@ web.get("/", async (req, res) => {
 //
 web.get("/home", async (req, res) => {
     res.render("pages/home");
-});
-//
-//
-web.get("/usuarios", async (req, res, next) => {
-    const db = require("./databases/db.user");
-    console.log('Começou!');
-    const clientes = await db.selectCustomers();
-    console.log(clientes);
-    res.render('usuarios/usuarios_view',{
-        results: clientes
-      });
-});
-//
-web.get("/clientes", async (req, res, next) => {
-    const db = require("./databases/db.clientes");
-    console.log('Começou!');
-    const clientes = await db.selectCustomers();
-    console.log(clientes);
-    res.render('clientes/clientes_view',{
-        results: clientes
-      });
 });
 //
 /*
