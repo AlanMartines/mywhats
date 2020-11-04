@@ -152,10 +152,12 @@ module.exports = class Sessions {
                 }
             );
             */
-        }, (statusSession) => {
+        }, (statusSession, session) => {
             console.log('- Status da sessão:', statusSession);
             //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail
-
+            //Create session wss return "serverClose" case server for close
+            console.log('- Session name: ', session);
+            
             if (statusSession == 'isLogged') {
                 session.state = "CONNECTED";
             } else if (statusSession == 'qrReadSuccess') {
