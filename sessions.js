@@ -223,13 +223,10 @@ module.exports = class Sessions {
             // Listen to messages
             client.onMessage((message) => {
                 if (message.body === 'Oi' && message.isGroupMsg === false) {
-                    client
-                        .sendText(message.from, '🕷 Welcome Venom Bot 🕸')
-                        .then((result) => {
-                            console.log('Result', result); //return object success
-                        })
-                        .catch((erro) => {
-                            console.error('Error', erro); //return object error
+                    client.sendText(message.from, '🕷 Welcome Venom Bot 🕸').then((result) => {
+                            console.log('- Result', result); //return object success
+                        }).catch((erro) => {
+                            console.error('- Error', erro); //return object error
                         });
                 }
             });
@@ -240,11 +237,6 @@ module.exports = class Sessions {
                 if ('CONFLICT'.includes(state)) client.useHere();
             });
             //
-            client.onStreamChange((stream) => {
-                console.log('- Stream changed: ', stream);
-                if ('DISCONNECTED'.includes(stream)) console.log('- Logout');
-              });
-              //
             // function to detect incoming call
             client.onIncomingCall(async (call) => {
                 console.log(call);
