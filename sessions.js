@@ -234,7 +234,10 @@ module.exports = class Sessions {
             client.onStateChange((state) => {
                 console.log('- State changed: ', state);
                 session.state = state;
+                // force whatsapp take over
                 if ('CONFLICT'.includes(state)) client.useHere();
+                // detect disconnect on whatsapp
+                if ('UNPAIRED'.includes(state)) console.log('- Logout');
             });
             //
             // function to detect incoming call
