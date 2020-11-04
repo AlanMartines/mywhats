@@ -230,6 +230,13 @@ module.exports = class Sessions {
                         });
                 }
             });
+            /*
+            client.onMessage((message) => {
+                if (message.body === 'Oi') {
+                    client.sendText(message.from, '🕷 Welcome Venom Bot 🕸');
+                }
+            });
+            */
             // State change
             client.onStateChange((state) => {
                 console.log('- State changed: ', state);
