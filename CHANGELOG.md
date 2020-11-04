@@ -16,13 +16,13 @@ _Todas as mudanças notáveis ​​neste projeto serão documentadas neste arqu
 
     Envia mensagem de texto para grupo informado.
 
-    Envia mensagem de imagem para contato informado.
+    Envia imagem para contato informado.
 
-    Envia mensagem de imagem para lista de contatos (em txt).
+    Envia imagem para lista de contatos (em txt).
 
-    Envia mensagem de imagem para grupo informado.
+    Envia imagem para grupo informado.
 
-    Checar simples contato.
+    Checa simples contato.
 
-    Checar multiplos contato (em txt).
+    Checa multiplos contato (em txt).
 ```
