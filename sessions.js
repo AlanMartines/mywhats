@@ -222,21 +222,18 @@ module.exports = class Sessions {
         await session.client.then(client => {
             // Listen to messages
             client.onMessage((message) => {
-                if (message.body === 'Oi' && message.isGroupMsg === false) {
-                    client.sendText(message.from, '🕷 Welcome Venom Bot 🕸').then((result) => {
-                            console.log('- Result', result); //return object success
-                        }).catch((erro) => {
-                            console.error('- Error', erro); //return object error
-                        });
-                }
+            if (message.body === 'Oi' && message.isGroupMsg === false) {
+              client
+                .sendText(message.from, '🕷 Welcome Venom Bot 🕸 \n \n Olá! Tudo bem com você?')
+                .then((result) => {
+                  console.log('- Result: ', result); //retorna um objeto de successo
+                })
+                .catch((erro) => {
+                  console.error('- Error: ', erro); //return um objeto de erro
+                });
+            }
             });
-            /*
-            client.onMessage((message) => {
-                if (message.body === 'Oi') {
-                    client.sendText(message.from, '🕷 Welcome Venom Bot 🕸');
-                }
-            });
-            */
+            //
             // State change
             client.onStateChange((state) => {
                 console.log('- State changed: ', state);

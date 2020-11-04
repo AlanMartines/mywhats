@@ -26,24 +26,28 @@ router.post("/Start", async (req, res, next) => {
         res.status(200).json({
             result: 'success',
             state: session.state,
+            state: session.status,
             message: "Sistema iniciado"
         });
     } else if (["STARTING"].includes(session.state)) {
         res.status(200).json({
             result: 'info',
             state: session.state,
+            state: session.status,
             message: "Sistema iniciando"
         });
     } else if (["QRCODE"].includes(session.state)) {
         res.status(200).json({
             result: 'warning',
             state: session.state,
+            state: session.status,
             message: "Sistema aguardando leitura do QR-Code"
         });
     } else {
         res.status(200).json({
             result: 'error',
             message: session.state,
+            state: session.status,
             message: "Sistema Off-line"
         });
     }

@@ -23,6 +23,11 @@ function startVenon(SessionName) {
                 $("#qrcodeVenon").html('<img src="/images/whatsapp-logo.png" class="img-fluid" width="120px" alt="Sucesso">');
                 $("#startVenom").html("Conectado");
                 $("#statusVenon").html("On-line");
+            } else if (response.result == "success" && response.state == "CONNECTED"  && response.status == "desconnectedMobile") {
+                closeVenon(SessionName);
+                $("#qrcodeVenon").html('<img src="/images/whatsapp-logo-off.png" class="img-fluid" width="120px" alt="Erro">');
+                $("#startVenom").html("Desonectado");
+                $("#statusVenon").html("Off-line");
             } else if (response.result == "error" && response.state == "UNPAIRED" || response.state == "UNPAIRED_IDLE") {
                 $("#qrcodeVenon").html('<img src="/images/whatsapp-logo-off.png" class="img-fluid" width="120px" alt="Erro">');
                 $("#startVenom").html("Desonectado");
