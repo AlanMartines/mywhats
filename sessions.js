@@ -51,7 +51,7 @@ module.exports = class Sessions {
             session.client = Sessions.initSession(sessionName);
         } else {
             console.log('- Nome da sessão:', session.name);
-            console.log('- Status do sistema:', session.state);
+            console.log('- State do sistema:', session.state);
             console.log('- Status da sessão:', session.status);
         }
         return session;
@@ -112,7 +112,7 @@ module.exports = class Sessions {
     static async initSession(sessionName) {
         console.log("- Iniciando sistema");
         var session = Sessions.getSession(sessionName);
-        const client = await venom.create(sessionName, (base64Qrimg, asciiQR, attempts) => {
+        const client = await venom.create(session.name, (base64Qrimg, asciiQR, attempts, urlCode) => {
             console.log('- Nome da sessão:', session.name);
             //
             session.state = "QRCODE";
@@ -128,6 +128,11 @@ module.exports = class Sessions {
             // Registrar o QR no terminal
             //console.log(asciiQR);
             session.CodeasciiQR = asciiQR;
+            //
+            console.log("- Captura do urlCode");
+            // Registrar o QR no terminal
+            //console.log(urlCode);
+            session.CodeurlCode = urlCode;
             /*
             // Para escrevê-lo em outro lugar em um arquivo
             //exportQR(base64Qrimg, './public/images/marketing-qr.png');
@@ -152,21 +157,22 @@ module.exports = class Sessions {
                 }
             );
             */
-        }, (statusSession, session) => {
+        }, (statusSession, session_venom) => {
+            var session = Sessions.getSession(sessionName);
             console.log('- Status da sessão:', statusSession);
             //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail
             //Create session wss return "serverClose" case server for close
-            console.log('- Session name: ', session);
+            console.log('- Session name: ', session_venom);
             
-            if (statusSession == 'isLogged') {
+            if (statusSession == 'isLogged' || statusSession == 'inChat') {
                 session.state = "CONNECTED";
             } else if (statusSession == 'qrReadSuccess') {
                 session.state = "CONNECTED";
-            } else if (statusSession == 'qrReadFail') {
+            } else if (statusSession == 'qrReadFail' || statusSession == 'notLogged') {
                 session.state = "STARTING";
                 session.client = Sessions.initSession(sessionName);
             }
-            session.status = statusSession;
+                session.status = statusSession;
         }, {
             folderNameToken: "tokens", //folder name when saving tokens
             mkdirFolderToken: '', //folder directory tokens, just inside the venom folder, example:  { mkdirFolderToken: '/node_modules', } //will save the tokens folder in the node_modules directory
@@ -177,6 +183,7 @@ module.exports = class Sessions {
             logQR: false, // Logs QR automatically in terminal
             browserWS: '', // If u want to use browserWSEndpoint
             //browserArgs: [''], // Parameters to be added into the chrome browser instance
+            //https://peter.sh/experiments/chromium-command-line-switches/
             browserArgs: [
                 '--log-level=3',
                 '--no-default-browser-check',
@@ -214,6 +221,74 @@ module.exports = class Sessions {
         });
         return client;
     } //initSession
+    //
+    // ------------------------------------------------------------------------------------------------//
+    //
+    // Device Functions
+    // Delete the Service Worker
+    static async killServiceWorker(sessionName) {
+        var session = Sessions.getSession(sessionName);
+        var resultkillServiceWorker = await session.client.then(async client => {
+            return await client.killServiceWorker();
+        });
+        console.log("- killServiceWorker:", resultkillServiceWorker);
+        session.state = resultkillServiceWorker;
+    } //killServiceWorker
+    //
+    // Load the service again
+    static async restartService(sessionName) {
+        var session = Sessions.getSession(sessionName);
+        var resultrestartService = await session.client.then(async client => {
+            return await client.restartService();
+        });
+        console.log("- restartService:", resultisrestartService);
+    } //restartService
+    //
+    // Get device info
+    static async getHostDevice(sessionName) {
+        var session = Sessions.getSession(sessionName);
+        var resultgetHostDevice = await session.client.then(async client => {
+            return await client.getHostDevice();
+        });
+        console.log("- getHostDevice:", resultgetHostDevice);
+    } //getHostDevice
+    //
+    // Get connection state
+    static async getConnectionState(sessionName) {
+        var session = Sessions.getSession(sessionName);
+        var resultisConnected = await session.client.then(async client => {
+            return await client.getConnectionState();
+        });
+        console.log("- getConnectionState:", resultisConnected);
+    } //getConnectionState
+    //
+    // Get battery level
+    static async getBatteryLevel(sessionName) {
+        var session = Sessions.getSession(sessionName);
+        var resultgetBatteryLevel = await session.client.then(async client => {
+            return await client.getBatteryLevel();
+        });
+        console.log("- isConnected:", resultgetBatteryLevel);
+    } //getBatteryLevel
+    //
+    // Is Connected
+    static async isConnected(sessionName) {
+        var session = Sessions.getSession(sessionName);
+        var resultisConnected = await session.client.then(async client => {
+            return await client.isConnected();
+        });
+        console.log("- isConnected:", resultisConnected);
+    } //isConnected
+    //
+      // Get whatsapp web version
+      static async getWAVersion(sessionName) {
+        var session = Sessions.getSession(sessionName);
+        var resultgetWAVersion = await session.client.then(async client => {
+            return await client.getWAVersion();
+        });
+        console.log("- isConnected:", resultgetWAVersion);
+    } //getWAVersion
+    //
     //
     // ------------------------------------------------------------------------------------------------//
     //

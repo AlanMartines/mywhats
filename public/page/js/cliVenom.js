@@ -15,11 +15,12 @@ function startVenon(SessionName) {
                 $("#qrcodeVenon").html('<img src="/images/whatsapp-logo.png" class="img-fluid" width="120px" alt="Sucesso">');
                 $("#startVenom").html("Iniciando");
                 $("#statusVenon").html("Off-line");
-            } else if (response.result == "warning" && response.state == "QRCODE") {
+            } else if (response.result == "warning" && response.state == "QRCODE" || response.status == "notLogged") {
                 qrcodeVenon(SessionName);
+                $("#qrcodeVenon").html('<img src="/images/whatsapp-logo-off.png" class="img-fluid" width="120px" alt="Erro">');
                 $("#startVenom").html("Ler QR-Code");
                 $("#statusVenon").html("Off-line");
-            } else if (response.result == "success" && response.state == "CONNECTED") {
+            } else if (response.result == "success" && response.state == "CONNECTED" ) {
                 $("#qrcodeVenon").html('<img src="/images/whatsapp-logo.png" class="img-fluid" width="120px" alt="Sucesso">');
                 $("#startVenom").html("Conectado");
                 $("#statusVenon").html("On-line");
@@ -28,7 +29,7 @@ function startVenon(SessionName) {
                 $("#qrcodeVenon").html('<img src="/images/whatsapp-logo-off.png" class="img-fluid" width="120px" alt="Erro">');
                 $("#startVenom").html("Desonectado");
                 $("#statusVenon").html("Off-line");
-            } else if (response.result == "error" && response.state == "UNPAIRED" || response.state == "UNPAIRED_IDLE") {
+            } else if (response.result == "error" && response.state == "UNPAIRED" || response.state == "UNPAIRED_IDLE" || response.status == "notLogged") {
                 $("#qrcodeVenon").html('<img src="/images/whatsapp-logo-off.png" class="img-fluid" width="120px" alt="Erro">');
                 $("#startVenom").html("Desonectado");
                 $("#statusVenon").html("Off-line");

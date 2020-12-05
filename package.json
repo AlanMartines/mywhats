@@ -62,20 +62,20 @@
     "mysql2": "^2.2.5",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.6",
-    "npm-check-updates": "^9.2.4",
+    "npm-check-updates": "^10.2.2",
     "os": "^0.1.1",
-    "puppeteer": "^5.4.1",
+    "puppeteer": "^5.5.0",
     "puppeteer-extra": "^3.1.15",
     "puppeteer-extra-plugin-stealth": "^2.6.5",
     "qrcode-terminal": "^0.12.0",
     "request": "^2.88.2",
     "rxjs": "^6.6.3",
     "sequelize": "^6.3.5",
-    "sequelize-auto": "^0.6.7",
+    "sequelize-auto": "^0.7.4",
     "sessions": "0.0.2",
-    "sharp": "^0.26.2",
+    "sharp": "^0.26.3",
     "spinnies": "^0.5.1",
     "tree-kill": "^1.2.2",
-    "venom-bot": "^2.0.18"
+    "venom-bot": "^2.1.2"
   }
 }
