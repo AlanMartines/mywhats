@@ -240,37 +240,7 @@ $('document').ready(function () {
                     $("#sendTexto").html('<i class="fas fa-spinner fa-spin"></i> Enviando...');
                 },
                 success: function (response) {
-                    if (response.erro == false && response.status == 'OK') {
-                        $("#sendTexto").html('<i class="fas fa-paper-plane"></i> Enviar');
-                        //
-                        Lobibox.notify('success', {
-                            title: false,
-                            soundPath: '/lobibox/sounds/',
-                            soundExt: '.ogg',
-                            sound: true,
-                            iconSource: "fontAwesome",
-                            icon: 'far fa-check-circle',
-                            size: 'mini',
-                            delay: 5000,
-                            msg: 'Menssagem enviada com sucesso!'
-                        });
-                        //
-                    } else if (response.erro == true && response.status == '404') {
-                        $("#sendTexto").html('<i class="fas fa-paper-plane"></i> Enviar');
-                        //
-                        Lobibox.notify('error', {
-                            title: false,
-                            soundPath: '/lobibox/sounds/',
-                            soundExt: '.ogg',
-                            sound: true,
-                            iconSource: "fontAwesome",
-                            icon: 'fas fa-times-circle',
-                            size: 'mini',
-                            delay: 5000,
-                            msg: 'Erro ao enviada menssagem!'
-                        });
-                        //
-                    } else if (response.result == 'error' && response.state == 'NOTFOUND') {
+                    if (response.result == 'error' && response.state == 'NOTFOUND') {
                         $("#sendTexto").html('<i class="fas fa-paper-plane"></i> Enviar');
                         //
                         Lobibox.notify('warning', {
@@ -313,6 +283,36 @@ $('document').ready(function () {
                             size: 'mini',
                             delay: 5000,
                             msg: response.message
+                        });
+                        //
+                    } else if (response !== false) {
+                        $("#sendTexto").html('<i class="fas fa-paper-plane"></i> Enviar');
+                        //
+                        Lobibox.notify('success', {
+                            title: false,
+                            soundPath: '/lobibox/sounds/',
+                            soundExt: '.ogg',
+                            sound: true,
+                            iconSource: "fontAwesome",
+                            icon: 'far fa-check-circle',
+                            size: 'mini',
+                            delay: 5000,
+                            msg: 'Menssagem enviada com sucesso!'
+                        });
+                        //
+                    } else if (response === false) {
+                        $("#sendTexto").html('<i class="fas fa-paper-plane"></i> Enviar');
+                        //
+                        Lobibox.notify('error', {
+                            title: false,
+                            soundPath: '/lobibox/sounds/',
+                            soundExt: '.ogg',
+                            sound: true,
+                            iconSource: "fontAwesome",
+                            icon: 'fas fa-times-circle',
+                            size: 'mini',
+                            delay: 5000,
+                            msg: 'Erro ao enviada menssagem!'
                         });
                         //
                     } else {
