@@ -71,7 +71,7 @@ http://localhost:8000/
 
 #### Pagina inicial
 <p align="left">
-  <img src="./public/images/prints/Screenshot_1.png" width="300" alt="My Whats">
+  <img src="./public/images/prints/Screenshot_1.png" width="500" alt="My Whats">
 </p>
 
 ## Dockerfile
