@@ -325,9 +325,11 @@ module.exports = class Sessions {
                 client.sendText(call.peerJid, "Desculpe, ainda não consigo atender chamadas");
             });
             // Listen to ack's
+            /*
             client.onAck((ack) => {
                 console.log('- Listen to acks:', ack);
               });
+              */
             // Listen when client has been added to a group
             client.onAddedToGroup((chatEvent) => {
                 console.log('- Listen when client has been added to a group:', chatEvent);
