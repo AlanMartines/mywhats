@@ -74,6 +74,17 @@ http://localhost:8000/
   <img src="./public/images/prints/Screenshot_1.png" width="500" alt="My Whats">
 </p>
 
+#### Menus
+<p align="left">
+  <img src="./public/images/prints/Screenshot_2.png" width="500" alt="My Whats">
+</p>
+<p align="left">
+  <img src="./public/images/prints/Screenshot_3.png" width="500" alt="My Whats">
+</p>
+<p align="left">
+  <img src="./public/images/prints/Screenshot_4.png" width="500" alt="My Whats">
+</p>
+
 ## Dockerfile
 ```bash
 # Ir para seu diretório home
