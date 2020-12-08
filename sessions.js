@@ -158,7 +158,6 @@ module.exports = class Sessions {
             );
             */
         }, (statusSession, session_venom) => {
-            var session = Sessions.getSession(sessionName);
             console.log('- Status da sessão:', statusSession);
             //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail
             //Create session wss return "serverClose" case server for close
@@ -170,7 +169,6 @@ module.exports = class Sessions {
                 session.state = "CONNECTED";
             } else if (statusSession == 'qrReadFail' || statusSession == 'notLogged') {
                 session.state = "STARTING";
-                session.client = Sessions.initSession(sessionName);
             }
                 session.status = statusSession;
         }, {
