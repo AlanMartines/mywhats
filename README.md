@@ -69,6 +69,10 @@ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -
 #### Acesso via web (Em desenvolvimento a integração/automatização)
 http://localhost:8000/
 
+## Pagina inicial
+<p align="center">
+  <img src="./public/images/prints/Screenshot_1.png" width="150" alt="My Whats">
+</p>
 
 ## Dockerfile
 ```bash
