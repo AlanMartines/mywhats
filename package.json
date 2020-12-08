@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AlanMartines/mywhats.git"
+    "url": "https://github.com/AlanMartines/mywhats-web.git"
   },
   "keywords": [
     "whatsapp",
@@ -26,9 +26,9 @@
   "author": "Alan Martines <alancpmartines@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlanMartines/mywhats/issues"
+    "url": "https://github.com/AlanMartines/mywhats-web/issues"
   },
-  "homepage": "https://github.com/AlanMartines/mywhats#readme",
+  "homepage": "https://github.com/AlanMartines/mywhats-web#readme",
   "dependencies": {
     "atob": "^2.1.2",
     "axios": "^0.21.0",

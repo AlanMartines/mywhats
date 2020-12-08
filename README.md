@@ -3,12 +3,22 @@
   <img src="./public/images/whatsapp-bot.png" width="150" alt="My Whats">
 </p>
 
-# My Whats
- Este projeto usa como base o [Venom-bot](https://github.com/orkestral/venom "Venom-bot"), um navegador virtual sem interface gráfica que abre o whatsapp web e executa todos os comandos via código possibilitando assim a automação de todas as funções, e um fork do projeto [myzap](https://github.com/billbarsch/myzap "myzap") do [@billbarsch](https://github.com/billbarsch "@billbarsch").
+# My Whats - Web
+ Este projeto usa como base o [Venom-bot](https://github.com/orkestral/venom "Venom-bot"), um navegador virtual sem interface gráfica que abre o whatsapp web e executa todos os comandos via código possibilitando assim a automação de todas as funções, para uso dessse projeto necessario [mywhats-api](https://github.com/AlanMartines/mywhats-api "mywhats-api").
 
 ## Dependências
 ```bash
-$ sudo apt install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget build-essential apt-transport-https libgbm-dev
+# Clone este repositório
+$ git clone https://github.com/AlanMartines/mywhats-api.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd mywhats-api
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação 
+$ node index.js
 ```
 ## Rodando a aplicação
 
@@ -29,10 +39,10 @@ $ sudo apt install -y git nodejs yarn gcc g++ make
 $ sudo apt autoremove -y
 
 # Clone este repositório
-$ git clone https://github.com/AlanMartines/mywhats.git
+$ git clone https://github.com/AlanMartines/mywhats-web.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd mywhats
+$ cd mywhats-web
 
 # Instale as dependências
 $ npm install
@@ -147,16 +157,16 @@ router.post("/Close", (req, res, next) => {
 $ cd ~
 
 # Clone este repositório
-$ git clone https://github.com/AlanMartines/mywhats.git
+$ git clone https://github.com/AlanMartines/mywhats-web.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd mywhats
+$ cd mywhats-web
 
 # Processando o arquivo Dockerfile
-$ docker build -t alanmartines/nodejs-mywhats:1.0 .
+$ docker build -t alanmartines/nodejs-mywhats-web:1.0 .
 
 # Criar um contêiner
-$ docker container run --name mywhats -p 8000:8000 -d alanmartines/nodejs-mywhats:1.0
+$ docker container run --name mywhats-web -p 8000:8000 -d alanmartines/nodejs-mywhats-web:1.0
 ```
 ## Para instalar o certbot e criar o certificado SSL para domínios https
 ```bash
