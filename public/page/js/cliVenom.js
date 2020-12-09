@@ -5,7 +5,10 @@ function startVenon(SessionName) {
         data: {
             SessionName: SessionName
         },
+        contentType: "application/json",
         dataType: 'json',
+        async: false,
+        cache: false,
         beforeSend: function () {
 
         },
@@ -57,7 +60,10 @@ function statusVenon(SessionName) {
         data: {
             SessionName: SessionName
         },
+        contentType: "application/json",
         dataType: 'json',
+        async: false,
+        cache: false,
         beforeSend: function () {
 
         },
@@ -80,7 +86,10 @@ function closeVenon(SessionName) {
         data: {
             SessionName: SessionName
         },
+        contentType: "application/json",
         dataType: 'json',
+        async: false,
+        cache: false,
         beforeSend: function () {
 
         },
@@ -108,7 +117,10 @@ function qrcodeVenon(SessionName) {
             SessionName: SessionName,
             View: false
         },
+        contentType: "application/json",
         dataType: 'json',
+        async: false,
+        cache: false,
         beforeSend: function () {
 
         },
