@@ -14,16 +14,12 @@ const web = express();
 const cors = require('cors');
 const admin = require("./routes/admin.routes");
 const pages = require("./routes/pages.routes");
-const monitor = require("./routes/monitor.routes");
-const sistem = require("./routes/sistem.routes");
 const usuarios = require("./routes/usuarios.routes");
-const api = require("./routes/api.routes");
 const ssl = process.env.HTTPS || false;
 const hostname = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 8000;
 const ssl_key = process.env.KEY || './sslcert/server.key';
 const ssl_cert = process.env.CERT || './sslcert/server.crt';
-const Sessions = require("./sessions.js");
 web.use(cors());
 web.use(express.json());
 //
@@ -51,8 +47,6 @@ web.use(express.static(path.join(__dirname, "public")));
 // Rotas
 web.use("/admin", admin);
 web.use("/pages", pages);
-web.use("/sistem", sistem);
-web.use("/monitor", monitor);
 web.use("/", usuarios);
 //web.use("/api", api);
 //
