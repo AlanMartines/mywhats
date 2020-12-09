@@ -4,63 +4,10 @@ FROM node:14-slim
 #FROM ubuntu:18.04
 #FROM ubuntu:20.04
 
-RUN mkdir -p /usr/src/app
-
-# apt-get install --no-install-recommends --no-install-suggests -y \
-RUN apt-get update && apt-get install -y \
-    gconf-service \
-    libasound2 \
-    libatk1.0-0 \
-    libc6 \
-    libcairo2 \
-    libcups2 \
-    libexpat1 \
-    libfontconfig1 \
-    libgcc1 \
-    libgconf-2-4 \
-    libgdk-pixbuf2.0-0 \
-    libglib2.0-0 \
-    libgtk-3-0 \
-    libnspr4 \
-    libpango-1.0-0 \
-    libpangocairo-1.0-0 \
-    libstdc++6 \
-    libx11-6 \
-    libx11-xcb1 \
-    libxcb1 \
-    libxcomposite1 \
-    libxcursor1 \
-    libxdamage1 \
-    libxext6 \
-    libxfixes3 \
-    libxi6 \
-    libxrandr2 \
-    libxrender1 \
-    libxss1 \
-    libxtst6 \
-    ca-certificates \
-    fonts-liberation \
-    libappindicator1 \
-    libnss3 \
-    lsb-release \
-    xdg-utils \
-    wget \
-    build-essential \
-    apt-transport-https \
-    libgbm-dev \
-    && apt-get install curl -y \
-    && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-    && apt-get install -y \
-    git \
-    nodejs \
-    yarn \
-    npm \
-    gcc \
-    g++ \
-    make
+RUN mkdir -p /usr/src/mywhats-web
 
 # Defina o diretório de trabalho.
-WORKDIR /usr/src/app
+WORKDIR /usr/src/mywhats-web
 
 # Copie o arquivo do seu host para o local atual.
 COPY package*.json ./
