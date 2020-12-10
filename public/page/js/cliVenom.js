@@ -1,7 +1,7 @@
 function startVenon(SessionName) {
     $.ajax({
         method: "POST",
-        url: 'http://localhost/sistem/Start',
+        url: 'http://localhost:9000/sistem/Start',
         data: {
             SessionName: SessionName
         },
@@ -56,7 +56,7 @@ function startVenon(SessionName) {
 function statusVenon(SessionName) {
     $.ajax({
         method: "POST",
-        url: 'http://localhost/sistem/Status',
+        url: 'http://localhost:9000/sistem/Status',
         data: {
             SessionName: SessionName
         },
@@ -82,7 +82,7 @@ function statusVenon(SessionName) {
 function closeVenon(SessionName) {
     $.ajax({
         method: "POST",
-        url: 'http://localhost/sistem/Close/',
+        url: 'http://localhost:9000/sistem/Close/',
         data: {
             SessionName: SessionName
         },
@@ -112,7 +112,7 @@ function closeVenon(SessionName) {
 function qrcodeVenon(SessionName) {
     $.ajax({
         method: "POST",
-        url: 'http://localhost/sistem/QRCode/',
+        url: 'http://localhost:9000/sistem/QRCode/',
         data: {
             SessionName: SessionName,
             View: false
