@@ -9,7 +9,7 @@
 ## Dependências
 ```bash
 # Clone este repositório
-$ git clone https://github.com/AlanMartines/mywhats-api.git
+$ git clone https://github.com/AlanMartines/mywhats-api-node.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd mywhats-api
@@ -39,7 +39,7 @@ $ sudo apt install -y git nodejs yarn gcc g++ make
 $ sudo apt autoremove -y
 
 # Clone este repositório
-$ git clone https://github.com/AlanMartines/mywhats-web.git
+$ git clone https://github.com/AlanMartines/mywhats-web-node.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd mywhats-web
@@ -91,16 +91,16 @@ http://localhost:8000/
 $ cd ~
 
 # Clone este repositório
-$ git clone https://github.com/AlanMartines/mywhats-web.git
+$ git clone https://github.com/AlanMartines/mywhats-web-node.git
 
 # Acesse a pasta do projeto no terminal/cmd
 $ cd mywhats-web
 
 # Processando o arquivo Dockerfile
-$ docker build -t alanmartines/nodejs-mywhats-web:1.0 .
+$ docker build -t alanmartines/nodejs-mywhats-web-node:1.0 .
 
 # Criar um contêiner
-$ docker container run --name mywhats-web -p 8000:8000 -d alanmartines/nodejs-mywhats-web:1.0
+$ docker container run --name mywhats-web-node -p 8000:8000 -d alanmartines/nodejs-mywhats-web-node:1.0
 ```
 ## Para instalar o certbot e criar o certificado SSL para domínios https
 ```bash
